@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>桌面寵物</title>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <canvas id="stage" aria-label="桌面寵物互動區"></canvas>
+
+    <div class="toolbar" id="toolbar">
+      <label class="name-field">
+        名字
+        <input id="nameInput" type="text" maxlength="16" placeholder="狗狗" />
+      </label>
+      <button id="callBtn" type="button">叫牠過來</button>
+      <button id="sitBtn" type="button">坐下</button>
+      <button id="napBtn" type="button">趴下</button>
+      <label>
+        大小
+        <input id="scaleRange" type="range" min="70" max="150" value="100" />
+      </label>
+    </div>
+
+    <script src="src/app.js"></script>
+  </body>
+</html>

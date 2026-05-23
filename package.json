@@ -1,0 +1,64 @@
+{
+  "name": "desktop-pet",
+  "version": "0.1.0",
+  "private": true,
+  "author": "socksplayground",
+  "description": "A tiny desktop pet prototype using custom pet sprite sheets.",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "node server.js",
+    "desktop": "electron .",
+    "icons": "electron scripts/generate-icons.js",
+    "pack:mac": "ELECTRON_BUILDER_CACHE=.cache/electron-builder electron-builder --mac --dir",
+    "dist:mac": "ELECTRON_BUILDER_CACHE=.cache/electron-builder electron-builder --mac dmg zip",
+    "dist:mac:arm64": "ELECTRON_BUILDER_CACHE=.cache/electron-builder electron-builder --mac dmg zip --arm64"
+  },
+  "devDependencies": {
+    "electron": "^31.7.7",
+    "electron-builder": "^26.8.1"
+  },
+  "build": {
+    "appId": "com.local.desktoppet",
+    "productName": "桌面寵物",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "electron/**/*",
+      "src/**/*",
+      "assets/**/*",
+      "build/tray-dog.png",
+      "pet.html",
+      "toolbar.html",
+      "package.json",
+      "!**/*.swp",
+      "!.cache/**/*",
+      "!dist/**/*",
+      "!node_modules/.cache/**/*"
+    ],
+    "mac": {
+      "category": "public.app-category.entertainment",
+      "icon": "build/icon.icns",
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "identity": null
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "afterPack": "scripts/afterPack.js"
+  }
+}

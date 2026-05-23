@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+    />
+    <title>桌面寵物工具列</title>
+    <link rel="stylesheet" href="src/toolbar.css" />
+  </head>
+  <body>
+    <div class="toolbar" id="toolbar">
+      <header class="toolbar-header">
+        <div class="title-block">
+          <div class="app-mark">🐶</div>
+          <div>
+            <h1>桌面寵物控制台</h1>
+          </div>
+        </div>
+      </header>
+
+      <main class="toolbar-grid">
+        <section class="panel identity-panel" aria-label="外觀">
+          <div class="panel-title">
+            <svg class="panel-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3.5a8.5 8.5 0 0 0 0 17h1.2a2 2 0 0 0 1.2-3.6l-.3-.2a1.2 1.2 0 0 1 .7-2.2H17a4.5 4.5 0 0 0 0-9 9.8 9.8 0 0 0-5-2Z" />
+              <circle cx="7.8" cy="10" r=".9" />
+              <circle cx="10.8" cy="7.5" r=".9" />
+              <circle cx="14.2" cy="8" r=".9" />
+            </svg>
+            基本設定
+          </div>
+          <div class="identity-fields">
+            <label>
+              <span>名字</span>
+              <input id="nameInput" type="text" maxlength="16" placeholder="狗狗" />
+            </label>
+            <label class="color-label">
+              <span>主題色</span>
+              <input id="heartColorInput" type="color" value="#ff5c8a" />
+            </label>
+          </div>
+        </section>
+
+        <section class="panel action-panel" aria-label="動作">
+          <div class="panel-title">
+            <svg class="panel-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.5" />
+              <path d="M10 8.8v6.4l5.2-3.2L10 8.8Z" />
+            </svg>
+            動作
+          </div>
+          <div class="action-row">
+            <button id="callBtn" type="button">叫牠</button>
+            <button id="sitBtn" type="button">坐下</button>
+            <button id="napBtn" type="button">趴下</button>
+          </div>
+        </section>
+
+        <section class="panel slider-panel">
+          <div class="panel-title">
+            <svg class="panel-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 6h16" />
+              <path d="M4 12h16" />
+              <path d="M4 18h16" />
+              <circle cx="9" cy="6" r="2" />
+              <circle cx="15" cy="12" r="2" />
+              <circle cx="11" cy="18" r="2" />
+            </svg>
+            調整
+          </div>
+          <label class="range-row">
+            <span>大小</span>
+            <input id="scaleRange" type="range" min="70" max="150" value="100" />
+          </label>
+          <label class="range-row">
+            <span>速度</span>
+            <input id="speedRange" type="range" min="40" max="220" value="100" />
+          </label>
+        </section>
+
+        <section class="panel reminder-panel">
+          <div>
+            <div class="panel-title">
+              <svg class="panel-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M15.6 17.5a3.6 3.6 0 0 1-7.2 0" />
+                <path d="M5.5 16.5h13" />
+                <path d="M7.5 16.5v-5.2a4.5 4.5 0 0 1 9 0v5.2" />
+                <path d="M12 4v2" />
+                <path d="M18.5 6.5 17 8" />
+                <path d="M5.5 6.5 7 8" />
+              </svg>
+              坐下提醒
+            </div>
+            <p>坐太久時提醒你一下，保持健康節奏。</p>
+          </div>
+          <label class="compact-number">
+            <span>等待時間</span>
+            <input id="reminderMinutesInput" type="number" min="0.1" max="240" step="0.5" />
+            <b>分鐘</b>
+          </label>
+          <label class="message-field">
+            <span>提醒詞內容</span>
+            <input id="reminderMessageInput" type="text" maxlength="24" placeholder="記得喝水" />
+          </label>
+        </section>
+
+        <section class="panel custom-pet-panel">
+          <div>
+            <div class="panel-title">
+              <svg class="panel-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 16V4" />
+                <path d="m7 9 5-5 5 5" />
+                <path d="M5 14.5v4.5h14v-4.5" />
+                <path d="M8 19v-3" />
+                <path d="M16 19v-3" />
+              </svg>
+              自家寶貝
+            </div>
+            <p>請上傳已去背 PNG：坐下、3-5 張走路、趴下，製作新的寵物。</p>
+          </div>
+          <div class="photo-pickers">
+            <label class="file-chip">
+              <span>坐下</span>
+              <input id="sitPhotoInput" type="file" accept="image/png" />
+              <small class="upload-status" id="sitUploadStatus">尚未上傳</small>
+            </label>
+            <label class="file-chip">
+              <span>走路 3-5 張</span>
+              <input id="walkPhotoInput" type="file" accept="image/png" multiple />
+              <small class="upload-status" id="walkUploadStatus">尚未上傳</small>
+            </label>
+            <label class="file-chip">
+              <span>趴下</span>
+              <input id="liePhotoInput" type="file" accept="image/png" />
+              <small class="upload-status" id="lieUploadStatus">尚未上傳</small>
+            </label>
+          </div>
+          <div class="custom-actions">
+            <button id="makePetBtn" type="button">製作新寵物</button>
+            <button id="restorePetBtn" type="button">恢復原始設定</button>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="src/toolbar.js"></script>
+  </body>
+</html>
