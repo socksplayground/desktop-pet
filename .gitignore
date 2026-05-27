@@ -1,9 +1,14 @@
 # macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+Icon?
 
 # Editors
 *.swp
 *.swo
+.vscode/
+.idea/
 
 # Dependencies
 node_modules/
@@ -11,16 +16,33 @@ node_modules/
 # Build caches
 .cache/
 node_modules/.cache/
+.npm/
+.electron/
+.electron-gyp/
+coverage/
 
 # Packaged apps and installers
 dist/
+out/
+release/
+*.dmg
+*.zip
+*.blockmap
+*.app
 
 # Temporary generated icon files
 build/icon.iconset/
 build/tray-icon.html
 
 # Logs
+logs/
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+# Local environment
+.env
+.env.*
+!.env.example
