@@ -1,6 +1,6 @@
 {
   "name": "desktop-pet",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "author": "socksplayground",
   "description": "A tiny desktop pet prototype using custom pet sprite sheets.",
@@ -9,9 +9,9 @@
     "start": "node server.js",
     "desktop": "electron .",
     "icons": "electron scripts/generate-icons.js",
-    "pack:mac": "ELECTRON_BUILDER_CACHE=.cache/electron-builder electron-builder --mac --dir",
-    "dist:mac": "ELECTRON_BUILDER_CACHE=.cache/electron-builder electron-builder --mac dmg zip",
-    "dist:mac:arm64": "ELECTRON_BUILDER_CACHE=.cache/electron-builder electron-builder --mac dmg zip --arm64"
+    "pack:mac": "ELECTRON_BUILDER_CACHE=.cache/electron-builder electron-builder --mac --dir --publish never",
+    "dist:mac": "ELECTRON_BUILDER_CACHE=.cache/electron-builder electron-builder --mac dmg zip --publish never",
+    "dist:mac:arm64": "ELECTRON_BUILDER_CACHE=.cache/electron-builder electron-builder --mac dmg zip --arm64 --publish never"
   },
   "devDependencies": {
     "electron": "^31.7.7",
