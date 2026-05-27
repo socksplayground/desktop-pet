@@ -99,6 +99,17 @@ npm run dist:mac:arm64
 
 目前預設是 ad-hoc 簽章，沒有 Apple Developer ID notarization。下載者第一次開啟時，可能需要在 Finder 對 App 右鍵選「打開」。
 
+## GitHub Release
+
+這個專案已設定 GitHub Actions。推送版本 tag 後，GitHub 會自動從目前原始碼打包 macOS arm64 的 `.dmg` 和 `.zip`，並上傳到 Release。
+
+```bash
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+Release 檔案會由 GitHub Actions 自動產生，比手動上傳更容易確認下載檔和原始碼是同一版。
+
 ## 安全性設計
 
 - 正式 app 不會開啟 port。
@@ -117,6 +128,7 @@ npm run dist:mac:arm64
 assets/                 預設寵物素材
 build/                  App 與選單列圖示
 docs/                   使用教學
+.github/workflows/      GitHub Actions 自動打包 release
 electron/               Electron main/preload 程式
 scripts/                圖示產生與打包後處理腳本
 src/pet-window.js       桌面寵物行為

@@ -24,19 +24,23 @@ git push -u origin main
 - `.DS_Store`
 - 編輯器暫存檔
 
-## 如果要提供下載檔
+## 自動建立 Release
 
-打包：
+這個專案使用 GitHub Actions 自動打包 release。
+
+建立新版本時，推送 tag：
 
 ```bash
-npm run icons
-npm run dist:mac:arm64
+git tag v0.1.0
+git push origin v0.1.0
 ```
 
-到 GitHub 的 Releases 建立新版本，並上傳：
+GitHub 會自動：
 
-- `dist/桌面寵物-0.1.0-arm64.dmg`：Apple Silicon Mac
-- `dist/桌面寵物-0.1.0-arm64-mac.zip`：Apple Silicon Mac 備用
+- 安裝依賴
+- 產生圖示
+- 打包 macOS arm64 的 `.dmg` 和 `.zip`
+- 把檔案上傳到 GitHub Release
 
 目前沒有提供 Intel Mac 版本。如果要支援 Intel Mac，需要另外打包 x64 或 universal 版本並測試。
 
